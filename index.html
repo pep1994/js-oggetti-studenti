@@ -8,10 +8,23 @@
   <body>
 
     <div class="container-first-student"></div>
-    
+
     <div class="container-students"></div>
 
 
+    <!-- Template titolo studenti -->
+    <script id="title-template" type="text/x-handlebars-template">
+      <h2>{{title}}</h2>
+    </script>
+
+    <!-- Template dati studenti -->
+    <script id="student-template" type="text/x-handlebars-template">
+      <h4>{{property}} {{value}}</h4>
+    </script>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="main.js"></script>
   </body>

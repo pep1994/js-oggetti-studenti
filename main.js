@@ -6,6 +6,25 @@
 
 $(document).ready(function(){
 
+  // variabili handlebars
+  var targetTitleHtml = $('#title-template').html();
+  var template = Handlebars.compile(targetTitleHtml);
+
+  var targetStudentHtml = $('#student-template').html();
+  var templateStudent = Handlebars.compile(targetStudentHtml);
+
+  var titleOneText = {
+    title: 'Dati primo studente'
+  }
+
+  var titleTwoText = {
+    title: 'Nomi e cognomi degli studenti'
+  }
+
+  var titleOneHtml = template(titleOneText);
+
+  var titleTwoHtml = template(titleTwoText);
+
   // creo oggetto che rappresenta uno studente
   var student = {
     nome: 'Marco',
@@ -13,11 +32,19 @@ $(document).ready(function(){
     eta: 26
   }
 
-   $('.container-first-student').append('<h2>Dati primo studente</h2>');
+   $('.container-first-student').append(titleOneHtml);
 
   // ciclo for-in per accedere ai valori di tutte le proprietà dell'oggetto
   for (var key in student) {
-    $('.container-first-student').append('<h3>' + key + ': ' + student[key] + '</h3>');
+
+    var singleStudent = {
+      property: key + ': ',
+      value: student[key]
+    }
+
+    var studentHtml = templateStudent(singleStudent)
+
+    $('.container-first-student').append(studentHtml);
 
   }
 
@@ -57,7 +84,7 @@ $(document).ready(function(){
   ];
 
   // scrivo titolo in pagina
-  $('.container-first-student').append('<h2>Nomi e cognomi degli studenti</h2>')
+  $('.container-first-student').append(titleTwoHtml)
 
   // ciclo per stampare in pagina i nomi e i cognomi degli studenti
   for (var i = 0; i < students.length; i++) {
